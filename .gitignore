@@ -4,7 +4,11 @@ data/raw/*
 data/cleaned/*
 !data/cleaned/.gitkeep
 
-.ipynb_checkpoints/
-outputs/
+.ipynb_checkpoints/*
+!.ipynb_checkpoints/.gitkeep
+
+outputs/*
+!outputs/.gitkeep
+
 __pycache__/
 *.pyc
