@@ -1,14 +1,22 @@
-data/raw/*
-!data/raw/.gitkeep
+# Ignore files directly inside data/
+data/*
 
+# But keep these folders
+!data/raw/
+!data/cleaned/
+
+# Ignore contents of raw and cleaned
+data/raw/*
 data/cleaned/*
+
+# But keep placeholders
+!data/raw/.gitkeep
 !data/cleaned/.gitkeep
 
-.ipynb_checkpoints/*
-!.ipynb_checkpoints/.gitkeep
-
+# Outputs folder
 outputs/*
 !outputs/.gitkeep
 
+.ipynb_checkpoints/
 __pycache__/
 *.pyc
