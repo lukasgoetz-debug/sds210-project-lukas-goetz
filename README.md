@@ -1,192 +1,138 @@
-\# Analyzing Reported Issues of ZüriWieNeu
-
-
+# Analyzing Reported Issues of ZüriWieNeu
 
 The ZüriWieNeu online reporting platform (https://www.zueriwieneu.ch/) enables the public to report damage or defects in Zurich's public infrastructure.
 
-
-
-\## Objective
-
-
+## Objective
 
 This project analyses reported issues from 2013 to 2026, focusing on their temporal evolution and spatial patterns across Zurich's neighbourhoods.
 
+## Data Sources
 
+The raw data files are not included in this repository and must be downloaded manually.
 
-\## Data Sources
+### Population data of Zurich
 
+Download the Excel file:
 
+https://www.stadt-zuerich.ch/content/dam/web/de/politik-verwaltung/statistik-und-daten/daten/bevoelkerung/BEV321T3211_auslaendische-Wohnbevoelkerung_Bevoelkerung_nach-Herkunft-Stadtkreis-Stadtquartier.xlsx
 
-\- Population data of Zurich:  
+### Reported issues on ZüriWieNeu
 
-&#x20; https://www.stadt-zuerich.ch/content/dam/web/de/politik-verwaltung/statistik-und-daten/daten/bevoelkerung/BEV321T3211\_auslaendische-Wohnbevoelkerung\_Bevoelkerung\_nach-Herkunft-Stadtkreis-Stadtquartier.xlsx
+Download the `.csv` file for the area **Stadt Zürich**:
 
+https://www.stadt-zuerich.ch/geodaten/download/Zueri_wie_neu?format=10008
 
+### Vector data of Zurich neighbourhoods
 
-\- Reported issues on ZüriWieNeu:  
+Download the `.gpkg` file for the area **Stadt Zürich**:
 
-&#x20; Download the `.csv` file for the area \*\*Stadt Zürich\*\*:  
+https://www.stadt-zuerich.ch/geodaten/download/Statistische_Quartiere?format=10005
 
-&#x20; https://www.stadt-zuerich.ch/geodaten/download/Zueri\_wie\_neu?format=10008
-
-
-
-\- Vector data of Zurich neighbourhoods:  
-
-&#x20; Download the `.gpkg` file for the area \*\*Stadt Zürich\*\*:  
-
-&#x20; https://www.stadt-zuerich.ch/geodaten/download/Statistische\_Quartiere?format=10005
-
-
-
-\## Reproducing the Environment
-
-
+## Reproducing the Environment
 
 This project requires a spatial Python environment. To recreate the environment:
 
+### 1. Ensure that Conda is installed
 
+You can use either Anaconda or Miniconda.
 
-1\. Ensure that Conda is installed.
+### 2. Clone this repository
 
+```bash
+git clone https://github.com/lukasgoetz-debug/sds210-project-lukas-goetz.git
+```
 
+### 3. Navigate to the project folder
 
-2\. Clone this repository:
+```bash
+cd sds210-project-lukas-goetz
+```
 
+### 4. Create the Conda environment from the YAML file
 
+```bash
+conda env create --file sds-env-goetz.yml
+```
 
-&#x20;  ```bash
+### 5. Activate the environment
 
-&#x20;  git clone https://github.com/lukasgoetz-debug/sds210-project-lukas-goetz.git
+```bash
+conda activate sds-env-goetz
+```
 
-&#x20;  ```
-
-
-
-3\. Navigate to the project folder:
-
-
-
-&#x20;  ```bash
-
-&#x20;  cd sds210-project-lukas-goetz
-
-&#x20;  ```
-
-
-
-4\. Create the Conda environment from the YAML file:
-
-
-
-&#x20;  ```bash
-
-&#x20;  conda env create --file sds-env-goetz.yml
-
-&#x20;  ```
-
-
-
-5\. Activate the environment:
-
-
-
-&#x20;  ```bash
-
-&#x20;  conda activate sds-env-goetz
-
-&#x20;  ```
-
-
-
-\## Running the Analysis
-
-
+## Running the Analysis
 
 After activating the environment:
 
+### 1. Download the raw data
 
+Download the three raw data files from the links listed in the **Data Sources** section.
 
-1\. Download the raw data from the links above.
+### 2. Store the downloaded files
 
+Place all downloaded raw files in:
 
+```text
+data/raw/
+```
 
-2\. Store the downloaded files in the `data/raw/` folder.
+### 3. Open JupyterLab from the project folder
 
+```bash
+jupyter lab
+```
 
+### 4. Open the notebooks
 
-3\. Open JupyterLab from the project folder:
+Open the notebooks in the `notebooks/` folder.
 
+### 5. Run the notebooks in this order
 
+1. `notebooks/01_zwn_data.ipynb`
+2. `notebooks/02_pop_quartiere_data.ipynb`
+3. `notebooks/03_analysis_plots.ipynb`
 
-&#x20;  ```bash
+### 6. Outputs
 
-&#x20;  jupyter lab
+Generated cleaned datasets are stored in:
 
-&#x20;  ```
+```text
+data/cleaned/
+```
 
+Generated plots, figures, and maps are stored in:
 
+```text
+outputs/
+```
 
-4\. Open the notebooks in the `notebooks/` folder.
-
-
-
-5\. Run the notebooks in this order:
-
-
-
-&#x20;  1. `notebooks/01\_zwn\_data.ipynb`
-
-&#x20;  2. `notebooks/02\_pop\_quartiere\_data.ipynb`
-
-&#x20;  3. `notebooks/03\_analysis\_plots.ipynb`
-
-
-
-6\. All generated plots are automatically stored in the `outputs/` folder.
-
-
-
-\## Project Structure
-
-
+## Project Structure
 
 The project is organised as follows:
 
-
-
 ```text
-
 sds210-project-lukas-goetz/
-
 │
-
 ├── data/
-
 │   ├── raw/          # Original downloaded data files
-
 │   └── cleaned/      # Cleaned data created during preprocessing
-
 │
-
 ├── notebooks/
-
-│   ├── 01\_zwn\_data.ipynb
-
-│   ├── 02\_pop\_quartiere\_data.ipynb
-
-│   └── 03\_analysis\_plots.ipynb
-
+│   ├── 01_zwn_data.ipynb
+│   ├── 02_pop_quartiere_data.ipynb
+│   └── 03_analysis_plots.ipynb
 │
-
 ├── outputs/          # Saved figures and maps
-
 │
-
-├── sds-env-goetz.yml
-
+├── sds-env-goetz.yml # Conda environment file
+├── .gitignore
 └── README.md
-
 ```
 
+## Notes
+
+The folders `data/raw/`, `data/cleaned/`, and `outputs/` are included in the repository using `.gitkeep` placeholder files.
+
+However, the actual raw data, cleaned data, and generated outputs are ignored by Git and are therefore not uploaded to GitHub.
+
+This keeps the repository lightweight and avoids committing large or generated files.
