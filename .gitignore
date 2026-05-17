@@ -1,6 +1,10 @@
-data/
+data/raw/*
+!data/raw/.gitkeep
+
+data/cleaned/*
+!data/cleaned/.gitkeep
+
 .ipynb_checkpoints/
 outputs/
 __pycache__/
 *.pyc
-
