@@ -32,9 +32,9 @@ https://www.stadt-zuerich.ch/geodaten/download/Statistische_Quartiere?format=100
 
 This project requires a spatial Python environment. To recreate the environment:
 
-### 1. Ensure that Conda is installed
+### 1. Ensure that Conda and Git are installed
 
-You can use either Anaconda or Miniconda.
+You can use either Anaconda or Miniconda. Alternatively, the Project folder can be downloaded manually from GitHub and the Environment recreated from sds-env-goetz.yml
 
 ### 2. Clone this repository
 
